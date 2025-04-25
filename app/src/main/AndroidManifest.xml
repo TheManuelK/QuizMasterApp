@@ -25,6 +25,10 @@
             android:name=".HostActivityHostGame"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".HostActivityGame"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>
