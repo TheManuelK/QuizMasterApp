@@ -29,7 +29,7 @@ public class HostActivityHostGame extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HostActivityHostGame.this, HostActivityGame.class);
+                Intent intent = new Intent(HostActivityHostGame.this, HostActivityGameRoom.class);
                 startActivity(intent);
             }
         });
