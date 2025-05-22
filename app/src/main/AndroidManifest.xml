@@ -33,6 +33,39 @@
             android:name=".HostActivityHostGameAddQuestion"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".PlayerActivityJoinGame"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".PlayerActivityGameRoom"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".HostActivityGameFinish"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".HostActivityGameRoom"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".PlayerActivityGameFinish"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".PlayerActivityQuestionABCD"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".PlayerActivityQuestionButton"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".PlayerActivityQuestionFreeAnswer"
+            android:exported="true">
+        </activity>
+
     </application>
 
 </manifest>

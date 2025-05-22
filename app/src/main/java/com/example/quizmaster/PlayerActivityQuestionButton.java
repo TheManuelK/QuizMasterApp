@@ -1,4 +1,6 @@
 package com.example.quizmaster;
 
-public class PlayerActivityQuestionButton {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class PlayerActivityQuestionButton extends AppCompatActivity {
 }

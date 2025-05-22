@@ -1,4 +1,6 @@
 package com.example.quizmaster;
 
-public class HostActivityGameFinish {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class HostActivityGameFinish extends AppCompatActivity {
 }
