@@ -25,11 +25,20 @@ public class HostActivityHostGame extends AppCompatActivity {
         });
 
         Button startButton = findViewById(R.id.startButton);
+        Button addQustionButton = findViewById(R.id.addQuestionButton);
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HostActivityHostGame.this, HostActivityGameRoom.class);
+                startActivity(intent);
+            }
+        });
+
+        addQustionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HostActivityHostGame.this, HostActivityHostGameAddQuestion.class);
                 startActivity(intent);
             }
         });
