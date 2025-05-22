@@ -1,0 +1,9 @@
+<resources>
+
+    <!-- Definiere das String-Array für die Fragetypen -->
+    <string-array name="question_types">
+        <item>ABCD</item>
+        <item>Schätzfrage</item>
+        <item>Button-Frage</item>
+    </string-array>
+</resources>
