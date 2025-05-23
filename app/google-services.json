@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "198164019591",
+    "project_id": "quizmaster-7842b",
+    "storage_bucket": "quizmaster-7842b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198164019591:android:f9907c71f81420fc52bb22",
+        "android_client_info": {
+          "package_name": "com.example.quizmaster"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4_C7ZCg4Jn2vGIU82Q87AXfkd1t_vDFQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
