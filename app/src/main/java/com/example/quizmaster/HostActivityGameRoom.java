@@ -20,6 +20,8 @@ public class HostActivityGameRoom extends AppCompatActivity {
 
     private DatabaseReference roomRef;
 
+    private String roomId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +34,10 @@ public class HostActivityGameRoom extends AppCompatActivity {
             return insets;
         });
 
-        TextView roomId = findViewById(R.id.inviteCode);
-        roomId.setText(getIntent().getStringExtra("ROOM_ID"));
+        roomId = getIntent().getStringExtra("ROOM_ID");
+
+        TextView roomIdSetter = findViewById(R.id.inviteCode);
+        roomIdSetter.setText(getIntent().getStringExtra("ROOM_ID"));
 
         Button startButton = findViewById(R.id.startGameButton);
 
@@ -41,6 +45,7 @@ public class HostActivityGameRoom extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HostActivityGameRoom.this, HostActivityGame.class);
+                intent.putExtra("ROOM_ID", roomId); // Stelle sicher, dass roomId nicht null ist
                 startActivity(intent);
             }
         });

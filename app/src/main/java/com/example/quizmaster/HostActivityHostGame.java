@@ -144,7 +144,6 @@ public class HostActivityHostGame extends AppCompatActivity {
 
 
     private void createRoom() {
-        // Hole den eingegebenen Raum-Namen
         String roomName = roomNameEditText.getText().toString().trim();
 
         if (roomName.isEmpty()) {
@@ -157,19 +156,16 @@ public class HostActivityHostGame extends AppCompatActivity {
             return;
         }
 
-        // Generiere eine eindeutige Raum-ID
         String roomId = UUID.randomUUID().toString();
 
-        // Erstelle ein HashMap-Objekt für die Raumdaten
         HashMap<String, Object> roomData = new HashMap<>();
         roomData.put("roomId", roomId);
         roomData.put("roomName", roomName);
-        roomData.put("hostName", "Host"); // Hier kannst du den Namen des Hosts einfügen
+        roomData.put("hostName", "Host");
         roomData.put("createdAt", System.currentTimeMillis());
-        roomData.put("questions", questionsMap); // Fragen hinzufügen
-        roomData.put("players", new HashMap<>()); // Leere Liste für Spieler
+        roomData.put("questions", questionsMap);
+        roomData.put("players", new HashMap<>());
 
-        // Speichere die Raumdaten in Firebase
         databaseReference.child("rooms").child(roomId).setValue(roomData)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -177,11 +173,11 @@ public class HostActivityHostGame extends AppCompatActivity {
                         Intent intent = new Intent(HostActivityHostGame.this, HostActivityGameRoom.class);
                         intent.putExtra("ROOM_ID", roomId);
                         startActivity(intent);
-                        // Optional: Diese Activity schließen, wenn der Nutzer nicht zurückkehren soll
                         finish();
                     } else {
                         Toast.makeText(this, "Fehler beim Erstellen des Raums!", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
+
 }
