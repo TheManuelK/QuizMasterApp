@@ -64,7 +64,7 @@ public class HostActivityGame extends AppCompatActivity {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         if (task.getResult().exists()) {
-                            HashMap<String, Object> questionsMap = (HashMap<String, Object>) task.getResult().getValue();
+                           /* HashMap<String, Object> questionsMap = (HashMap<String, Object>) task.getResult().getValue();
 
                             for (String question : questionsMap.keySet()) {
                                 Object optionsObject = questionsMap.get(question);
@@ -75,7 +75,8 @@ public class HostActivityGame extends AppCompatActivity {
                                     Log.d("Firebase", "Frage: " + question);
                                     Log.d("Firebase", "Antwortmöglichkeiten: " + optionsList);
                                 }
-                            }
+                            }*/
+                            Toast.makeText(this, "Fragen erfolgreich geladen!", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(this, "Keine Fragen gefunden!", Toast.LENGTH_SHORT).show();
                         }
