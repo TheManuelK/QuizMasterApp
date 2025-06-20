@@ -1,5 +1,6 @@
 package com.example.quizmaster;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -46,6 +47,7 @@ public class PlayerActivityGameRoom extends AppCompatActivity {
 
         // Lade die Spieler aus der Firebase-Datenbank
         loadPlayers();
+        startGame();
     }
 
     private void loadPlayers() {
@@ -67,5 +69,22 @@ public class PlayerActivityGameRoom extends AppCompatActivity {
                         Log.e("PlayerActivityGameRoom", "Fehler beim Laden der Spieler", error.toException());
                     }
                 });
+    }
+
+    private void startGame() {
+        databaseReference.child("rooms").child(roomId).child("QuestionIndex").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Intent intent = new Intent(PlayerActivityGameRoom.this, PlayerActivityQuestionABCD.class);
+                intent.putExtra("ROOM_ID", roomId);
+                startActivity(intent);
+                finish();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

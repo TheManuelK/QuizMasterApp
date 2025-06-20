@@ -48,6 +48,7 @@ public class HostActivityGame extends AppCompatActivity {
 
         // Lade die Fragen aus der Firebase-Datenbank
         loadQuestions(roomId);
+        databaseReference.child("rooms").child(roomId).child("QuestionIndex").setValue(1);
 
         // Setze den Listener für den "Next Question"-Button
         nextQuestionButton.setOnClickListener(new View.OnClickListener() {
