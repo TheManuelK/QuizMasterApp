@@ -165,6 +165,7 @@ public class HostActivityHostGame extends AppCompatActivity {
         roomData.put("createdAt", System.currentTimeMillis());
         roomData.put("questions", questionsMap);
         roomData.put("players", new HashMap<>());
+        roomData.put("QuestionIndex", 0);
 
         databaseReference.child("rooms").child(roomId).setValue(roomData)
                 .addOnCompleteListener(task -> {
