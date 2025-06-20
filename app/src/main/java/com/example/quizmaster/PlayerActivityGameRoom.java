@@ -47,7 +47,9 @@ public class PlayerActivityGameRoom extends AppCompatActivity {
 
         // Lade die Spieler aus der Firebase-Datenbank
         loadPlayers();
-        startGame();
+
+        // Überwache den QuestionIndex, um zu erkennen, wann das Spiel startet
+        monitorGameStart();
     }
 
     private void loadPlayers() {
@@ -71,20 +73,32 @@ public class PlayerActivityGameRoom extends AppCompatActivity {
                 });
     }
 
-    private void startGame() {
-        databaseReference.child("rooms").child(roomId).child("QuestionIndex").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Intent intent = new Intent(PlayerActivityGameRoom.this, PlayerActivityQuestionABCD.class);
-                intent.putExtra("ROOM_ID", roomId);
-                startActivity(intent);
-                finish();
-            }
+    private void monitorGameStart() {
+        databaseReference.child("rooms").child(roomId).child("QuestionIndex")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            int questionIndex = snapshot.getValue(Integer.class); // Hole den aktuellen QuestionIndex
+                            if (questionIndex == 1) {
+                                // Wenn der QuestionIndex auf 1 gesetzt wird, starte die Question-Activity
+                                startQuestionActivity();
+                            }
+                        }
+                    }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(PlayerActivityGameRoom.this, "Fehler beim Überwachen des Spiels: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.e("PlayerActivityGameRoom", "Fehler beim Überwachen des Spiels", error.toException());
+                    }
+                });
+    }
 
-            }
-        });
+    private void startQuestionActivity() {
+        Intent intent = new Intent(PlayerActivityGameRoom.this, PlayerActivityQuestionABCD.class);
+        intent.putExtra("ROOM_ID", roomId);
+        startActivity(intent);
+        finish(); // Schließe die Lobby-Activity, da das Spiel gestartet wurde
     }
 }
